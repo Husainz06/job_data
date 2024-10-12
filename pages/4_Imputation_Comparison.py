@@ -22,7 +22,7 @@ st.write('Here we want to see how the original data looks like i.e. before imput
 
 # First plot
 plt.figure(figsize=(8, 6))
-plt.boxplot([original_df['Salary From'].dropna(), original_df['Salary To'].dropna()], tick_labels=['Salary From', 'Salary To'])
+plt.boxplot([original_df['Salary From'].dropna(), original_df['Salary To'].dropna()])#, tick_labels=['Salary From', 'Salary To'])
 plt.title('Salary Distribution (Box Plot)')
 plt.ylabel('Salary')
 plt.grid()
