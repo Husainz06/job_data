@@ -1,5 +1,6 @@
 regex
-matplotlib.pyplot
+matplotlib
+sklearn
 math
 numpy
 pandas
