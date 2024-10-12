@@ -5,4 +5,4 @@ math
 numpy
 pandas
 regex
-
+scikit-learn
