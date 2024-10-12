@@ -1,5 +1,4 @@
-matplotlib.pyplot
-sklearn
+matplotlib
 math
 numpy
 pandas
