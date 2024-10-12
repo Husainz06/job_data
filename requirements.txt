@@ -1,5 +1,4 @@
-sklearn.impute
-matplotlib.pyplot
+matplotlib
 sklearn
 math
 numpy
