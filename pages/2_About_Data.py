@@ -9,7 +9,7 @@ original_df = pd.read_csv('/workspaces/job_data/pages/originalOverview.csv')
 st.write(original_df.head(50))
 st.write('The data had to be cleaned in several ways to get to be usable for this project.\
          To read more details about the cleaning and encoding process, check out the \'Data Preparation\' tab.')
-original_df = pd.read_csv('/workspaces/job_data/pages/cleaned.csv')
+original_df = pd.read_csv('cleaned.csv')
 
 st.write('Data Sample:')
 st.write(df.head(50))
