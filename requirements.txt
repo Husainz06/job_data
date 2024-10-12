@@ -1,7 +1,8 @@
-regex
-matplotlib
+
 matplotlib.pyplot
 sklearn
 math
 numpy
 pandas
+regex
+
