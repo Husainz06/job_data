@@ -22,7 +22,7 @@ st.write('Here we want to see how the original data looks like i.e. before imput
 
 # First plot
 plt.figure(figsize=(8, 6))
-plt.boxplot([original_df['Salary From'].dropna(), original_df['Salary To'].dropna()], labels=['Salary From', 'Salary To'])
+plt.boxplot([original_df['Salary From'].dropna(), original_df['Salary To'].dropna()], tick_labels=['Salary From', 'Salary To'])
 plt.title('Salary Distribution (Box Plot)')
 plt.ylabel('Salary')
 plt.grid()
@@ -58,7 +58,7 @@ df_mean_imputation.loc[missing_indices_high, 'Salary To'] = np.random.randn(miss
 # Plot
 
 plt.figure(figsize=(8, 6))
-plt.boxplot([df_mean_imputation['Salary From'], df_mean_imputation['Salary To']], labels=['Salary From', 'Salary To'])
+plt.boxplot([df_mean_imputation['Salary From'], df_mean_imputation['Salary To']], tick_labels=['Salary From', 'Salary To'])
 plt.title('Salary Distribution Mean Imputation')
 plt.ylabel('Salary')
 plt.grid()
@@ -93,7 +93,7 @@ df_knn[numeric_cols] = knn_imputer.fit_transform(df_knn[numeric_cols])
 # Plot
 
 plt.figure(figsize=(8, 6))
-plt.boxplot([df_knn['Salary From'], df_knn['Salary To']], labels=['Salary From', 'Salary To'])
+plt.boxplot([df_knn['Salary From'], df_knn['Salary To']], tick_labels=['Salary From', 'Salary To'])
 plt.title('Salary Distribution KNN Imputation')
 plt.ylabel('Salary')
 plt.grid()
