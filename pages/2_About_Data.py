@@ -5,7 +5,7 @@ import pandas as pd
 st.subheader('Data Overview')
 st.write("The dataset contsains a little over 12,300 Data Science job postings from\
          Indeed.com. Below is a sample of the original rawn data:\n")
-original_df = pd.read_csv('https://drive.google.com/file/d/1aRyAp1B3skvbNT1Q6x0hN9y4UFFok-yk/view?usp=share_link')
+original_df = pd.read_csv('/workspaces/job_data/pages/originalOverview.csv')
 st.write(original_df.head(50))
 st.write('The data had to be cleaned in several ways to get to be usable for this project.\
          To read more details about the cleaning and encoding process, check out the \'Data Preparation\' tab.')
