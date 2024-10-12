@@ -1,5 +1,5 @@
 regex
-matplotlip
+matplotlib.pyplot
 math
 numpy
 pandas
