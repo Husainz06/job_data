@@ -1,0 +1,5 @@
+regex
+matplotlip
+math
+numpy
+pandas
