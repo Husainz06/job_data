@@ -38,22 +38,22 @@ st.write('In this section, we apply mean imputation i.e. utilizing the mean and\
          In this section, we are dropping the missing values fromt the visualization')
 
 # Calculating the means and stds
-mean_low = original_df['Salary From'].mean()
-std_low = original_df['Salary From'].std()
+#mean_low = original_df['Salary From'].mean()
+#std_low = original_df['Salary From'].std()
 
-mean_high = original_df['Salary To'].mean()
-std_high = original_df['Salary To'].std()
+#mean_high = original_df['Salary To'].mean()
+#std_high = original_df['Salary To'].std()
 
 # Make an independent copy of the dataframe
-df_mean_imputation = original_df.copy()
+df_mean_imputation = pd.read_csv('pages/mean_imputed.csv')
 
 #Find missing indicies in the columns
-missing_indices_low = df_mean_imputation['Salary From'].isna()
-missing_indices_high = df_mean_imputation['Salary To'].isna()
+#missing_indices_low = df_mean_imputation['Salary From'].isna()
+#missing_indices_high = df_mean_imputation['Salary To'].isna()
 
 # Impute data using mean + std
-df_mean_imputation.loc[missing_indices_low, 'Salary From'] = np.random.randn(missing_indices_low.sum()) * std_low + mean_low
-df_mean_imputation.loc[missing_indices_high, 'Salary To'] = np.random.randn(missing_indices_high.sum()) * std_high + std_high
+#df_mean_imputation.loc[missing_indices_low, 'Salary From'] = np.random.randn(missing_indices_low.sum()) * std_low + mean_low
+#df_mean_imputation.loc[missing_indices_high, 'Salary To'] = np.random.randn(missing_indices_high.sum()) * std_high + std_high
 
 # Plot
 
@@ -74,20 +74,20 @@ st.write('In this section, we apply KNN imputation to see what difference it mak
 # KNN
 
 #Make an indepenedent copy for KNN
-df_knn = original_df.copy()
+df_knn = pd.read_csv('pages/knnimputed.csv')
 
 # KNN
 #df_knn['Salary From'] = pd.to_numeric(df_knn['Salary From'], errors='coerce')
 #df_knn['Salary To'] = pd.to_numeric(df_knn['Salary To'], errors='coerce')
 
 # Create KNNImputer
-knn_imputer = KNNImputer(n_neighbors=5)
+#knn_imputer = KNNImputer(n_neighbors=5)
 
 # Select only numeric columns for imputation
-numeric_cols = df_knn.select_dtypes(include=['float64', 'int64']).columns
+#numeric_cols = df_knn.select_dtypes(include=['float64', 'int64']).columns
 
 # Perform KNN imputation
-df_knn[numeric_cols] = knn_imputer.fit_transform(df_knn[numeric_cols])
+#df_knn[numeric_cols] = knn_imputer.fit_transform(df_knn[numeric_cols])
 
 
 # Plot
