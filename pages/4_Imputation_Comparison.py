@@ -56,6 +56,8 @@ df_mean_imputation = pd.read_csv('pages/mean_imputed.csv')
 #df_mean_imputation.loc[missing_indices_high, 'Salary To'] = np.random.randn(missing_indices_high.sum()) * std_high + std_high
 
 # Plot
+plt.hist(df_knn['Salary From'], stacked = True, bins = 30)
+plt.xlim(10000, 300000)
 
 plt.figure(figsize=(8, 6))
 plt.boxplot([df_mean_imputation['Salary From'], df_mean_imputation['Salary To']], tick_labels=['Salary From', 'Salary To'])
