@@ -109,39 +109,3 @@ st.write('In this section we compare the results of the imputations using histog
          of the salaries.')
 
 
-# comparisons
-import seaborn as sns
-
-# original vs mean imputation
-
-plt.subplot(221)
-sns.histplot(original_df['Salary From'].dropna(), kde=True, color='blue', alpha=0.5, label='Original')
-sns.histplot(df_mean_imputation['Salary From'], kde=True, color='green', alpha=0.5, label='Mean Imputed', bins=30)
-plt.legend()
-
-plt.subplot(222)
-sns.histplot(original_df['Salary To'].dropna(), kde=True, color='blue', alpha=0.5, label='Original')
-sns.histplot(df_mean_imputation['Salary To'], kde=True, color='green', alpha=0.5, label='Mean Imputed', bins=30)
-plt.legend()
-plt.show()
-plt.suptitle('Original VS Mean Imputation')
-
-st.pyplot(plt)
-plt.clf()
-
-# original vs knn
-
-plt.subplot(221)
-sns.histplot(original_df['Salary From'].dropna(), kde=True, color='blue', alpha=0.5, label='Original')
-sns.histplot(df_knn['Salary From'], kde=True, color='green', alpha=0.5, label='KNN Imputed', bins=30)
-plt.legend()
-
-plt.subplot(222)
-sns.histplot(original_df['Salary To'].dropna(), kde=True, color='blue', alpha=0.5, label='Original')
-sns.histplot(df_knn['Salary To'], kde=True, color='green', alpha=0.5, label='KNN Imputed', bins=30)
-plt.legend()
-plt.show()
-plt.suptitle('Original VS KNN Imputation')
-
-st.pyplot(plt)
-plt.clf()
