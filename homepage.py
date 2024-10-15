@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title('About This Project')
+st.title('Data Science Job Postings Analysis')
 st.subheader('Story')
 st.image("pages/gol.jpeg", caption="The Game of Life")
 st.write('Have you ever played the \'The Game of Life\'?  Well if you have not, then here\'s a brief overview.\
