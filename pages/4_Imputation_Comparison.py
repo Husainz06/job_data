@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.impute import KNNImputer
 
-
-original = pd.read_csv('pages/cleaned_v2.csv')
+# Remember to uncomment if needed
+#original = pd.read_csv('pages/cleaned_v2.csv')
 
 st.title('Handling Missing Data - Imputation')
 st.write('The dataset has missing salary information and the data is missing \
