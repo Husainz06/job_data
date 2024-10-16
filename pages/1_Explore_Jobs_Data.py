@@ -3,7 +3,7 @@ import plotly.express as px
 import streamlit as st
 st.title('Dataset Analysis')
 # Load your data
-data = pd.read_csv('cleaned_v2.csv')
+data = pd.read_csv('pages/knn_imputed_v2.csv')
 
 # Create a scatter plot for salary vs location
 fig = px.scatter(
