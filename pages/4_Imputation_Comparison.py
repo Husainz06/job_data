@@ -6,7 +6,7 @@ import numpy as np
 from sklearn.impute import KNNImputer
 
 
-original_df = pd.read_csv('pages/cleaned.csv')
+original = pd.read_csv('pages/cleaned_v2.csv')
 
 st.title('Handling Missing Data - Imputation')
 st.write('The dataset has missing salary information and the data is missing \
@@ -14,98 +14,25 @@ st.write('The dataset has missing salary information and the data is missing \
          to another feature or to certain values of the salary\
          Here, we compare the results of different imputation methods to see \
          how the dataset is affected\n In this page, we apply different\
-         Data Imputation Techniques to see how the dataset is affected')
+         Data Imputation Techniques to see how the dataset is affected. First, let\'s see \
+         the missing data that needs to be imputed.')
 
-st.subheader('Original Data')
-st.write('Here we want to see how the original data looks like i.e. before imputation\n')
+# Create a heatmap to visualize missing data
+# Note that these are images as generating the plots slows down the loading
+# All codes are available on the GitHub Repo.
+st.image("Images/missing_heat_map.png", caption="Missing Data")
 
+st.write('As can be seen from the figure above, there\'s a lot of missing salary data \
+         which is a very important feature for the purposes of this application. Imputation \
+         takes care of that and fills in the missing data. However, which imputation technique \
+         is better? That\'s what we will try to answer in the follwoing sections.')
+st.subheader('Data Distribution')
+st.write('Since we implemented more than one imputation technique, we want to know which one is better \
+         for this application. Below we will compare these to see what sort of information we can get \
+         and if that information can help us pick an imputation technique over another.\n')
 
-# First plot
-plt.figure(figsize=(8, 6))
-plt.boxplot([original_df['Salary From'].dropna(), original_df['Salary To'].dropna()])#, tick_labels=['Salary From', 'Salary To'])
-plt.title('Salary Distribution (Box Plot)')
-plt.ylabel('Salary')
-plt.grid()
+st.image("Images/histograms.png", caption="Data Distribution Comparison")
 
-# Display the plot in Streamlit
-st.pyplot(plt)
-
-plt.clf()
-
-st.subheader('Mean Imputation')
-st.write('In this section, we apply mean imputation i.e. utilizing the mean and\
-          standard deviation of the salaries column to fill in the missing values.\
-         In this section, we are dropping the missing values fromt the visualization')
-
-# Calculating the means and stds
-#mean_low = original_df['Salary From'].mean()
-#std_low = original_df['Salary From'].std()
-
-#mean_high = original_df['Salary To'].mean()
-#std_high = original_df['Salary To'].std()
-
-# Make an independent copy of the dataframe
-df_mean_imputation = pd.read_csv('pages/mean_imputed.csv')
-
-#Find missing indicies in the columns
-#missing_indices_low = df_mean_imputation['Salary From'].isna()
-#missing_indices_high = df_mean_imputation['Salary To'].isna()
-
-# Impute data using mean + std
-#df_mean_imputation.loc[missing_indices_low, 'Salary From'] = np.random.randn(missing_indices_low.sum()) * std_low + mean_low
-#df_mean_imputation.loc[missing_indices_high, 'Salary To'] = np.random.randn(missing_indices_high.sum()) * std_high + std_high
-
-# Plot
-plt.hist(df_mean_imputation['Salary From'], stacked = True, bins = 30)
-plt.xlim(10000, 300000)
-
-plt.figure(figsize=(8, 6))
-plt.boxplot([df_mean_imputation['Salary From'], df_mean_imputation['Salary To']], tick_labels=['Salary From', 'Salary To'])
-plt.title('Salary Distribution Mean Imputation')
-plt.ylabel('Salary')
-plt.grid()
-st.pyplot(plt)
-
-plt.clf()
-st.subheader('KNN Imputation')
-st.write('In this section, we apply KNN imputation to see what difference it makes in the \
-          salary distribution compared to the Mean imputation.')
-
-
-
-# KNN
-
-#Make an indepenedent copy for KNN
-df_knn = pd.read_csv('pages/knnimputed.csv')
-
-# KNN
-#df_knn['Salary From'] = pd.to_numeric(df_knn['Salary From'], errors='coerce')
-#df_knn['Salary To'] = pd.to_numeric(df_knn['Salary To'], errors='coerce')
-
-# Create KNNImputer
-#knn_imputer = KNNImputer(n_neighbors=5)
-
-# Select only numeric columns for imputation
-#numeric_cols = df_knn.select_dtypes(include=['float64', 'int64']).columns
-
-# Perform KNN imputation
-#df_knn[numeric_cols] = knn_imputer.fit_transform(df_knn[numeric_cols])
-
-
-# Plot
-
-plt.figure(figsize=(8, 6))
-plt.boxplot([df_knn['Salary From'], df_knn['Salary To']], tick_labels=['Salary From', 'Salary To'])
-plt.title('Salary Distribution KNN Imputation')
-plt.ylabel('Salary')
-plt.grid()
-st.pyplot(plt)
-
-
-plt.clf()
-
-st.subheader("Comparison")
-st.write('In this section we compare the results of the imputations using histograms that show the distribution\
-         of the salaries.')
-
-
+st.write('Let\'s see what information we can get from a box plot as it will help us better see the \
+         quartiles and outliers')
+st.image("Images/box_plots.png", caption="Box Plots")
