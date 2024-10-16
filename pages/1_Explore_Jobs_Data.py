@@ -69,5 +69,5 @@ fig.update_layout(
 )
 
 # Streamlit app layout
-st.title('Salary vs Location Visualization')
+st.subheader('Salary vs Location Visualization')
 st.plotly_chart(fig)
