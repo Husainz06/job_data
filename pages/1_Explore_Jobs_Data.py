@@ -29,3 +29,52 @@ fig.update_traces(
     customdata=data[['Salary To']].values
 )
 st.plotly_chart(fig)
+
+
+st.write('plot 2')
+
+import pandas as pd
+import plotly.express as px
+import streamlit as st
+
+# Load your data
+data = pd.read_csv('pages/cleaned_v2.csv')
+
+# Fill NaN values in salary columns with 0 for calculations
+data['Salary From'] = data['Salary From'].fillna(0)
+data['Salary To'] = data['Salary To'].fillna(0)
+
+# Calculate average salary
+data['Average Salary'] = (data['Salary From'] + data['Salary To']) / 2
+
+# Create a container for the checkboxes
+with st.container():
+    st.write("Select Qualifications to Filter:")
+    qualifications = ['Python', 'Java', 'C++', 'SQL', 'Javascript', 'linux']
+    selected_qualifications = {qual: st.checkbox(qual, value=True) for qual in qualifications}
+
+# Filter data based on selected qualifications
+filtered_data = data.copy()
+for qual, selected in selected_qualifications.items():
+    if not selected:
+        filtered_data = filtered_data[filtered_data[qual] == 0]
+
+# Group by location and calculate the average salary
+average_salary_by_location = filtered_data.groupby('Location')['Average Salary'].mean().reset_index()
+
+# Create a Plotly bar chart for average salary per location
+fig = px.bar(
+    average_salary_by_location,
+    x='Location',
+    y='Average Salary',
+    title='Average Salary per Location',
+    labels={'Average Salary': 'Average Salary ($)', 'Location': 'Location'},
+)
+
+# Update layout for better visibility
+fig.update_layout(xaxis_tickangle=-45)
+
+# Show the plot in Streamlit
+st.title('Average Salary by Location Based on Qualifications')
+st.plotly_chart(fig)
+
