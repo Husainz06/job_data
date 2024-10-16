@@ -1,12 +1,4 @@
 import streamlit as st
-from sklearn.impute import SimpleImputer
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-from sklearn.impute import KNNImputer
-
-# Remember to uncomment if needed
-#original = pd.read_csv('pages/cleaned_v2.csv')
 
 st.title('Handling Missing Data - Imputation')
 st.write('The dataset has missing salary information and the data is missing \
@@ -36,3 +28,28 @@ st.image("Images/histograms.png", caption="Data Distribution Comparison")
 st.write('Let\'s see what information we can get from a box plot as it will help us better see the \
          quartiles and outliers')
 st.image("Images/box_plots.png", caption="Box Plots")
+
+st.write("From the box plot above, we can clearly see a wider second and third quartiles for the mean \
+         imputed data. However, there's clearly a problem here with some salaries reaching zero or even \
+         below zero. This tells us that we cannot reliably rely on this imputation method for this application \
+         as a negative salary is not a thing. Let\'s combine the boxes and distributions in a violin plot to paint a broader image of the imputed\
+          data.")
+st.image("Images/violin_box.png", caption="Violin Plots")
+
+st.write('Looking at the violin plot, we can see that there\'s a good amount of salaries below zero \
+         in the mean imputed dataset. This could be a result of using the mean and standard deviation \
+         in the imputation process but we are not 100\% sure as to why that\'s happening but the hard \
+         conclusion is that it is not a reliable imputation method for this applicatopm. However, \
+         when we combine the information we can get from the histograms above, the box plots, and the \
+         violin plots, we can clearly see that KNN imputation performed much better in this particular \
+         case.')
+st.subheader('Thoughts and Conclusion')
+st.write('While KNN imputation performed better than mean imputation in this applcation, there might be \
+         more to explore here. Other imputation techniques might yeild better results. There could be some \
+         useful correlations that can be used to impute salaries here such as the location of the job, \
+         the experience level and the required qualifications.')
+st.write("We will need to do more testing using other imputation methods that take these factors into \
+         consideration but in the meantime, we will be using the KNN imputed dataset for the rest of this \
+         application and may compare it sometimes to the original un-imputed dataset. The reson for this \
+         comparison is because the purpose of the application is to help you make a decision that could be \
+         based on the salary and not everyone would be comfortable using synthesized data for such a decision.")
