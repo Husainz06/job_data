@@ -76,3 +76,39 @@ fig.update_layout(xaxis_tickangle=-45)
 
 # Show the plot in Streamlit
 st.plotly_chart(fig)
+
+
+st.subheader('Job Counts')
+
+with st.container():
+    st.write("Select Qualifications to Filter:")
+    qualifications = ['Python', 'Java', 'C++', 'SQL', 'Javascript', 'linux']
+    
+    # Create horizontal checkboxes
+    cols = st.columns(len(qualifications))
+    selected_qualifications = {}
+    for i, qual in enumerate(qualifications):
+        selected_qualifications[qual] = cols[i].checkbox(qual, value=True)
+
+# Filter data based on selected qualifications
+filtered_data = data.copy()
+for qual, selected in selected_qualifications.items():
+    if not selected:
+        filtered_data = filtered_data[filtered_data[qual] == 0]
+
+# Count the number of jobs requiring each qualification by location
+job_counts = filtered_data.groupby('Location').size().reset_index(name='Job Count')
+
+# Create a Plotly bar chart for job counts per location
+fig = px.bar(
+    job_counts,
+    x='Location',
+    y='Job Count',
+    color='Location',  # Color by location
+    title='Count of Jobs by Location Based on Qualifications',
+    labels={'Job Count': 'Job Count', 'Location': 'Location'},
+)
+
+# Update layout for better visibility
+fig.update_layout(xaxis_tickangle=-45)
+st.plotly_chart(fig)
