@@ -4,7 +4,9 @@ import streamlit as st
 st.title('Dataset Analysis')
 # Load your data
 data = pd.read_csv('pages/knn_imputed_v2.csv')
-
+st.subheader('Salary vs Location Visualization')
+st.write('Use the following plot to see the salary ranges for jobs accress states.\
+You can hover over a dot to show information.')
 # Create a scatter plot for salary vs location
 fig = px.scatter(
     data,
@@ -26,48 +28,4 @@ fig.update_traces(
     hovertext=data['Job Title'],
     customdata=data[['Salary To']].values
 )
-
-# Get unique locations for dropdown
-locations = data['Location'].unique()
-
-# Create dropdown buttons for each location
-buttons = [
-    {
-        'label': location,
-        'method': 'update',
-        'args': [
-            {'x': [location], 'y': [data.loc[data['Location'] == location, 'Salary From']]},
-            {'title': f'Salary From vs {location}'}
-        ]
-    }
-    for location in locations
-]
-
-# Add button to show all locations
-buttons.append({
-    'label': 'All Locations',
-    'method': 'update',
-    'args': [
-        {'x': data['Location'], 'y': data['Salary From']},
-        {'title': 'Salary From vs Location'}
-    ]
-})
-
-# Update layout with dropdown menu
-fig.update_layout(
-    updatemenus=[
-        {
-            'buttons': buttons,
-            'direction': 'down',
-            'showactive': True,
-            'x': 0.1,
-            'xanchor': 'left',
-            'y': 1.1,
-            'yanchor': 'top'
-        }
-    ]
-)
-
-# Streamlit app layout
-st.subheader('Salary vs Location Visualization')
 st.plotly_chart(fig)
