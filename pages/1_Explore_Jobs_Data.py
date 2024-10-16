@@ -79,7 +79,7 @@ st.plotly_chart(fig)
 
 
 st.subheader('Job Counts')
-
+# Create a container for the checkboxes
 with st.container():
     st.write("Select Qualifications to Filter:")
     qualifications = ['Python', 'Java', 'C++', 'SQL', 'Javascript', 'linux']
@@ -88,7 +88,7 @@ with st.container():
     cols = st.columns(len(qualifications))
     selected_qualifications = {}
     for i, qual in enumerate(qualifications):
-        selected_qualifications[qual] = cols[i].checkbox(qual, value=True)
+        selected_qualifications[qual] = cols[i].checkbox(qual, value=True, key=qual)  # Use qual as the key
 
 # Filter data based on selected qualifications
 filtered_data = data.copy()
@@ -111,4 +111,7 @@ fig = px.bar(
 
 # Update layout for better visibility
 fig.update_layout(xaxis_tickangle=-45)
+
+# Show the plot in Streamlit
+st.title('Count of Jobs by Location Based on Qualifications')
 st.plotly_chart(fig)
