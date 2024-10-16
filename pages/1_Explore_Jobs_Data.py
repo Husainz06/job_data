@@ -31,13 +31,8 @@ fig.update_traces(
 st.plotly_chart(fig)
 
 
-st.write('plot 2')
-import pandas as pd
-import plotly.express as px
-import streamlit as st
+st.subheader('Average Salary Per State - Qualification Based')
 
-# Load your data
-data = pd.read_csv('cleaned_v2.csv')
 
 # Fill NaN values in salary columns with 0 for calculations
 data['Salary From'] = data['Salary From'].fillna(0)
