@@ -127,3 +127,6 @@ For example, is there a correlation between Python and SQL? which helps you answ
 I\'m very experienced in Python, do I need to learn SQL? To answer such questions, let\'s look at the following \
 plot that shows the correlation between different features of the data.')
 st.image("Images/ corr_matrix.png", caption="Correlation Matrix")
+st.write("When we look at the plot above we can answer the question we asked earlier. As we can see there is \
+a positive correlation between Python and SQL which tells us that there's a good percentage of jobs that require\
+ both.")
