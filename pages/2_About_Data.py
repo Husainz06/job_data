@@ -24,3 +24,5 @@ st.subheader("Basic Statistics")
 st.write('Below is some basic statistics of the cleaned sample above. This just shows some\
          basic things like minimum value, maximum value, average, and standard deviation.')
 st.write(df.describe())
+st.write('While this veriosn of the data was used to compare the imputation methods, it is not the one that is used for the \
+application as one used was further processed to be ready. See \'Data Preparation\' tab and \'Imputation Comparison\' tab for more details.')
