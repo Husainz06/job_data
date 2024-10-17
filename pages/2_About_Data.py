@@ -15,7 +15,7 @@ st.write('The data had to be cleaned in several ways to get it to be usable for 
          To read more details about the cleaning and encoding process, check out the\
           \'Data Preparation\' tab. Below is a sample of the cleaned data. Note that the columns\
          after \'Salary To\' change depending on the searched data.')
-df = pd.read_csv('pages/cleaned.csv')
+df = pd.read_csv('pages/cleaned_v2.csv')
 st.write(df.head(50))
 
 
