@@ -5,8 +5,8 @@ st.title('Dataset Analysis')
 # Load your data
 data = pd.read_csv('pages/knn_imputed_v2.csv')
 st.subheader('Salary vs Location Visualization')
-st.write('Use the following plot to see the salary ranges for jobs accress states.\
-You can hover over a dot to show information.')
+st.write('The following plot shows the salary ranges and distributions for different jobs accross the states.\
+You can hover over a dot to show job titles and salary information.')
 # Create a scatter plot for salary vs location
 fig = px.scatter(
     data,
@@ -32,7 +32,10 @@ st.plotly_chart(fig)
 
 
 st.subheader('Average Salary Per State - Qualification Based')
-
+st.write('Having experience in one or more programming languages and being familiar with some technologies \
+is a big factor in getting a job which can also affect the salary range. Use the following plot to find \
+the average salary per state based on the qualifications listed above the plot. \
+Check/uncheck any of the qualifications to see the salary ranges.')
 
 # Fill NaN values in salary columns with 0 for calculations
 data['Salary From'] = data['Salary From'].fillna(0)
@@ -78,7 +81,10 @@ fig.update_layout(xaxis_tickangle=-45)
 st.plotly_chart(fig)
 
 
-st.subheader('Job Counts')
+st.subheader('Job Counts Per Location')
+st.write('Certain location may have different industry requirements and therefore may have \
+different qualification requirements. The following plot shows the job count per location based \
+on qualifications. You can check/uncheck qualifications to see the job counts.')
 # Create a container for the checkboxes
 with st.container():
     st.write("Select Qualifications to Filter:")
@@ -111,7 +117,4 @@ fig = px.bar(
 
 # Update layout for better visibility
 fig.update_layout(xaxis_tickangle=-45)
-
-# Show the plot in Streamlit
-st.title('Count of Jobs by Location Based on Qualifications')
 st.plotly_chart(fig)
