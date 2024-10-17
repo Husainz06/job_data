@@ -118,3 +118,34 @@ fig = px.bar(
 # Update layout for better visibility
 fig.update_layout(xaxis_tickangle=-45)
 st.plotly_chart(fig)
+
+st.subheader('Relationship Between Salary and Qualifications')
+st.write('While experience level plays a role in the salary range, there are other factors that \
+may affect that. Moreover, some jobs may ask for more than one technology/qualification. The question \
+we are trying to answer here is \'is there a correlation between the different features of the data?\' \
+For example, is there a correlation between Python and SQL? which helps you answer the following question \
+I'm very experienced in Python, do I need to learn SQL? To answer such questions, let\'s look at the following \
+plot that shows the correlation between different features of the data.')
+
+data_cor = data.loc[:, ~data.columns.str.contains('^Unnamed')]
+
+# Select only numeric columns for correlation
+numeric_data = data_cor.select_dtypes(include=['float64', 'int64'])
+
+# Compute the correlation matrix
+correlation_matrix = numeric_data.corr()
+
+# Flip the order of the columns and rows
+correlation_matrix = correlation_matrix[::-1].reset_index().set_index('index')
+
+# Create an interactive heatmap
+fig = ff.create_annotated_heatmap(
+    z=correlation_matrix.values,
+    x=list(correlation_matrix.columns),
+    y=list(correlation_matrix.index),
+    annotation_text=correlation_matrix.round(2).values,
+    colorscale='Viridis'
+)
+
+# Display the heatmap
+st.plotly_chart(fig, use_container_width=True)
