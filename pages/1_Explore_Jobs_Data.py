@@ -126,4 +126,4 @@ we are trying to answer here is \'is there a correlation between the different f
 For example, is there a correlation between Python and SQL? which helps you answer the following question \
 I\'m very experienced in Python, do I need to learn SQL? To answer such questions, let\'s look at the following \
 plot that shows the correlation between different features of the data.')
-st.image("Images/corr_matrix.png", caption="Correlation Matrix")
+st.image("Images/ corr_matrix.png", caption="Correlation Matrix")
