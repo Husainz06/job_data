@@ -43,6 +43,8 @@ st.write('Looking at the violin plot, we can see that there\'s a good amount of 
          when we combine the information we can get from the histograms above, the box plots, and the \
          violin plots, we can clearly see that KNN imputation performed much better in this particular \
          case.')
+st.subheader("Statistical Comparison")
+st.write("Add statistical comparison between the original dataset and methods here")
 st.subheader('Thoughts and Conclusion')
 st.write('While KNN imputation performed better than mean imputation in this applcation, there might be \
          more to explore here. Other imputation techniques might yeild better results. There could be some \
