@@ -108,5 +108,7 @@ st.write("For the next part of this application, we plan to investigate and impl
          in the analysis.")
 st.write("One of the features that we will investigate the possibility of adding is \
          trying to compare data from different time periods to try to predict the \
-         trajectory of the job market. Last but not least, we plan on doing more EDA \
+         trajectory of the job market. We also plan on trying to improve the application's \
+         performance as loading some of the plots is slow at this time. Last but not least, we plan on doing more EDA \
          to see what questions we can answer based on the dataset we have.")
+
